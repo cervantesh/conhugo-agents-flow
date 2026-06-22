@@ -1,0 +1,93 @@
+# ConHugo Agents Flow
+
+Open source tooling for coordinating humans and agents while they work inside Git repositories.
+
+`ConHugo Agents Flow` is not product runtime code. It is development-process tooling: durable handoffs, shared working memory, anti-drift checks, and upgradeable repo-local coordination artifacts.
+
+## What It Does
+
+- publishes durable machine-readable events between agents
+- keeps repo-local coordination state under `.agents/` and `docs/coordination/`
+- blocks commits when action-required updates are unread
+- installs and upgrades managed repo artifacts
+- validates installation health and version drift with `doctor`
+
+## What It Is Not
+
+- not business logic
+- not application runtime
+- not deployment runtime
+- not customer-facing functionality
+- not product telemetry
+
+## Installation
+
+```bash
+pip install conhugo-agents-flow
+```
+
+## Basic Usage
+
+Bootstrap a target repository:
+
+```bash
+conhugo-agents-flow install --repo-root /path/to/repo
+```
+
+Upgrade a target repository to the current version:
+
+```bash
+conhugo-agents-flow install --repo-root /path/to/repo --upgrade
+conhugo-agents-flow doctor --repo-root /path/to/repo
+```
+
+Core commands:
+
+```bash
+conhugo-agents-flow publish --repo-root /path/to/repo --from codex-a --to codex-b --issue 12 --branch feat/12-x --summary "Ready for review" --action-required
+conhugo-agents-flow check --repo-root /path/to/repo --agent codex-b
+conhugo-agents-flow ack --repo-root /path/to/repo --agent codex-b
+conhugo-agents-flow doctor --repo-root /path/to/repo
+```
+
+The legacy alias `agent-bus` is also exposed as a CLI entrypoint.
+
+## Repo Footprint
+
+A target repository may contain a local coordination instance with:
+
+- `.agents/`
+- `docs/coordination/`
+- `agent-bus.json`
+- `AGENT_BUS.md`
+- `.githooks/`
+- a thin wrapper script
+
+That footprint is process infrastructure only. It is not shipped product code.
+
+## Versioning and Upgrades
+
+- package version comes from `src/agent_bus/__init__.py`
+- installed repos record the current package version in `agent-bus.json`
+- `doctor` detects version drift and missing managed files
+- `install --upgrade` refreshes only managed static files and preserves live repo state like event streams and active handoffs
+
+## Current Hardening
+
+- atomic writes for registry, acks, manifest, and generated docs
+- lock files for mutating operations and ops-log writes
+- managed static file inventory in the manifest
+- installation health checks through `doctor`
+- unit tests for bootstrap, publish/check/ack, upgrade behavior, doctor, and lock contention
+
+## Development
+
+Run tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+## License
+
+MIT

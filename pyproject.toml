@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conhugo-agents-flow"
+dynamic = ["version"]
+description = "Open source development-process tooling for human and agent coordination across Git repositories"
+requires-python = ">=3.11"
+readme = "README.md"
+license = "MIT"
+keywords = ["agents", "git", "workflow", "coordination", "developer-tools", "ai-agents"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Software Development :: Version Control :: Git",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.unittest]
+testpaths = ["tests"]
+
+[project.scripts]
+conhugo-agents-flow = "agent_bus.cli:main"
+agent-bus = "agent_bus.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/cervantesh/conhugo-agents-flow"
+Repository = "https://github.com/cervantesh/conhugo-agents-flow"
+Issues = "https://github.com/cervantesh/conhugo-agents-flow/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "agent_bus.__version__"}
+
+[tool.setuptools.package-data]
+agent_bus = ["templates/**/*"]

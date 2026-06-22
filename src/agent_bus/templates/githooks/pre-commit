@@ -1,0 +1,2 @@
+#!/bin/sh
+python scripts/agent_bus.py pre-commit-check --repo-root .

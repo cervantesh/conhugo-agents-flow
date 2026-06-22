@@ -1,0 +1,13 @@
+{
+  "type": "handoff",
+  "from": "agent-a",
+  "to": "agent-b",
+  "issue": "12",
+  "branch": "feat/12-example",
+  "summary": "Implemented repository bootstrap and left one blocker.",
+  "next_steps": [
+    "Review the automation scripts.",
+    "Validate the first issue workflow."
+  ],
+  "action_required": true
+}
