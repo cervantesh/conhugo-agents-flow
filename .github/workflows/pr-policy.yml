@@ -1,0 +1,46 @@
+name: PR Policy
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  issue-link:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enforce linked issue
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          import sys
+
+          title = os.environ.get("PR_TITLE") or ""
+          body = os.environ.get("PR_BODY") or ""
+          text = f"{title}\n{body}"
+
+          patterns = [
+              r'(?i)\b(closes?|closed|fixes?|fixed|resolves?|resolved|refs?)\s+#\d+\b',
+              r'(?i)\b(closes?|closed|fixes?|fixed|resolves?|resolved|refs?)\s+https://github\.com/[^/]+/[^/]+/issues/\d+\b',
+          ]
+
+          if any(re.search(pattern, text) for pattern in patterns):
+              print("PR policy passed: issue reference detected.")
+              raise SystemExit(0)
+
+          print("PR policy failed: missing issue reference.", file=sys.stderr)
+          print(
+              "Every pull request must reference an issue in the title or body, "
+              "for example: 'Closes #12' or 'Refs #12'.",
+              file=sys.stderr,
+          )
+          raise SystemExit(1)
+          PY

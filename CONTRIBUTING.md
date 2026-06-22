@@ -37,6 +37,8 @@ python -m build
 - avoid breaking installed repo footprints without an explicit migration story
 - preserve live repo state during `install --upgrade`
 - keep new commands and manifest fields covered by tests
+- open an issue before opening a pull request for roadmap-significant or behavior-changing work
+- every pull request must link its issue explicitly, for example `Closes #12` or `Refs #12`
 
 ## Versioning
 
@@ -56,6 +58,13 @@ python -m build
 6. GitHub Actions will run CI, build artifacts, and publish to the live PyPI project on the tag
 7. Confirm the package page shows the new version at `https://pypi.org/project/conhugo-agents-flow/`
 8. Use manual dispatch only when you need an out-of-band publish run, such as re-running `target=pypi`
+
+## Branch Policy
+
+- `main` is intended to be protected against direct pushes
+- changes should land through pull requests only
+- PRs are expected to pass `CI` and `PR Policy`
+- the `PR Policy` workflow enforces an explicit issue reference
 
 ## Publishing Configuration
 
