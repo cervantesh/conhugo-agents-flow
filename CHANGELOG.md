@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is inspired by Keep a Changelog and this project follows Semantic Versioning.
 
+## [0.1.1] - 2026-06-22
+
+### Fixed
+
+- removed the deprecated MIT license classifier that broke package builds in GitHub Actions
+- changed the publish workflow so tag pushes build and validate artifacts without failing on unconfigured PyPI publishing
+
+### Changed
+
+- package metadata now declares `license-files = ["LICENSE"]`
+
 ## [0.1.0] - 2026-06-22
 
 ### Added

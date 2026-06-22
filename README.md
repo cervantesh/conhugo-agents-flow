@@ -100,8 +100,8 @@ python -m build
 - update `src/agent_bus/__init__.py`
 - update `CHANGELOG.md`
 - push a tag like `v0.1.1`
-- GitHub Actions will publish to PyPI on version tags
-- manual dispatch of the publish workflow can be used for TestPyPI
+- GitHub Actions will build and validate artifacts on version tags
+- manual dispatch of the publish workflow can be used for TestPyPI or PyPI when publishing is configured
 
 See [CONTRIBUTING.md](C:/dev/conhugo-agents-flow/CONTRIBUTING.md) for the development and release flow.
 

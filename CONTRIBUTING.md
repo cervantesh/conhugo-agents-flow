@@ -51,4 +51,5 @@ python -m build
 2. Update `CHANGELOG.md`
 3. Merge to `main`
 4. Create and push a tag like `v0.1.1`
-5. GitHub Actions will run CI and publish to PyPI if repository secrets/trusted publishing are configured
+5. GitHub Actions will run CI and validate build artifacts on the tag
+6. Trigger the publish workflow manually for TestPyPI or PyPI once publishing is configured

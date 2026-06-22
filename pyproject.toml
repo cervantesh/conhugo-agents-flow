@@ -9,11 +9,11 @@ description = "Open source development-process tooling for human and agent coord
 requires-python = ">=3.11"
 readme = "README.md"
 license = "MIT"
+license-files = ["LICENSE"]
 keywords = ["agents", "git", "workflow", "coordination", "developer-tools", "ai-agents"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Topic :: Software Development :: Version Control :: Git",
