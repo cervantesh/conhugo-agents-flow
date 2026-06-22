@@ -52,9 +52,9 @@ python -m build
 3. Merge to `main`
 4. Create and push a tag like `v0.1.1`
 5. GitHub Actions will create a GitHub Release with generated notes for that tag
-6. GitHub Actions will run CI and validate build artifacts on the tag
-7. Trigger `publish.yml` manually with `target=pypi` to publish to the live PyPI project
-8. Confirm the package page shows the new version at `https://pypi.org/project/conhugo-agents-flow/`
+6. GitHub Actions will run CI, build artifacts, and publish to the live PyPI project on the tag
+7. Confirm the package page shows the new version at `https://pypi.org/project/conhugo-agents-flow/`
+8. Use manual dispatch only when you need an out-of-band publish run, such as re-running `target=pypi`
 
 ## Publishing Configuration
 
@@ -63,4 +63,5 @@ python -m build
 - current trusted publisher repository: `conhugo-agents-flow`
 - current trusted publisher workflow: `publish.yml`
 - current trusted publisher environment: `pypi`
-- if you want pre-production package validation, register a separate trusted publisher for the `testpypi` environment before dispatching that target
+- TestPyPI publishing is disabled by default to avoid false CI/CD failures on unconfigured environments
+- to enable TestPyPI, register a trusted publisher for the `testpypi` environment and set repository variable `TEST_PYPI_PUBLISHING_ENABLED=true`

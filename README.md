@@ -108,10 +108,10 @@ python -m build
 - update `CHANGELOG.md`
 - push a tag like `v0.1.1`
 - GitHub automatically creates a GitHub Release with generated notes for every `v*` tag
-- GitHub Actions will build and validate artifacts on version tags
-- manual dispatch of the publish workflow can publish to PyPI through the configured trusted publisher
+- GitHub Actions will build, validate, and publish to PyPI automatically on version tags
 - PyPI production publishing is active for `cervantesh/conhugo-agents-flow` via `publish.yml` and environment `pypi`
-- configure a separate trusted publisher before using the `testpypi` target
+- manual dispatch of the publish workflow remains available for `target=pypi`
+- the `testpypi` target is gated and skips cleanly unless `TEST_PYPI_PUBLISHING_ENABLED=true` is configured after registering a trusted publisher for the `testpypi` environment
 
 See [CONTRIBUTING.md](C:/dev/conhugo-agents-flow/CONTRIBUTING.md) for the development and release flow.
 

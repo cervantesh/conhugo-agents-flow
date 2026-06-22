@@ -15,6 +15,10 @@ on:
           - testpypi
           - pypi
 
+concurrency:
+  group: publish-${{ github.ref }}-${{ github.event_name }}-${{ inputs.target || 'tag' }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,7 +54,7 @@ jobs:
           path: dist/
 
   publish-testpypi:
-    if: github.event_name == 'workflow_dispatch' && inputs.target == 'testpypi'
+    if: github.event_name == 'workflow_dispatch' && inputs.target == 'testpypi' && vars.TEST_PYPI_PUBLISHING_ENABLED == 'true'
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -72,7 +76,7 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
 
   publish-pypi:
-    if: github.event_name == 'workflow_dispatch' && inputs.target == 'pypi'
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.target == 'pypi')
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -90,3 +94,14 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+  testpypi-disabled:
+    if: github.event_name == 'workflow_dispatch' && inputs.target == 'testpypi' && vars.TEST_PYPI_PUBLISHING_ENABLED != 'true'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Explain TestPyPI skip
+        run: |
+          echo "TestPyPI publishing is disabled for this repository."
+          echo "Set repository variable TEST_PYPI_PUBLISHING_ENABLED=true after registering the trusted publisher for the testpypi environment."

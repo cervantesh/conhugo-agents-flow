@@ -15,9 +15,12 @@ The format is inspired by Keep a Changelog and this project follows Semantic Ver
 
 - removed the deprecated MIT license classifier that broke package builds in GitHub Actions
 - changed the publish workflow so tag pushes build and validate artifacts without failing on unconfigured PyPI publishing
+- gated the `testpypi` publish path so it skips cleanly unless that environment is explicitly enabled
 
 ### Changed
 
+- version tags now publish to live PyPI automatically through the configured trusted publisher
+- manual publish dispatch remains available for `pypi` reruns and optional `testpypi` usage
 - package metadata now declares `license-files = ["LICENSE"]`
 
 ## [0.1.0] - 2026-06-22
