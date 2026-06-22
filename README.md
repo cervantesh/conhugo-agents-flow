@@ -35,6 +35,17 @@ Published package:
 - PyPI: `conhugo-agents-flow`
 - Maintainer account: `cervantesh`
 
+Container image:
+
+- GHCR: `ghcr.io/cervantesh/conhugo-agents-flow`
+
+## Distribution Model
+
+- PyPI is the canonical distribution channel for the Python package
+- GHCR is the canonical distribution channel for the containerized CLI
+- GitHub Packages is not used here as a Python package registry replacement
+- GitHub Releases remain the release-note and source-artifact surface
+
 ## Basic Usage
 
 Bootstrap a target repository:
@@ -60,6 +71,12 @@ conhugo-agents-flow doctor --repo-root /path/to/repo
 ```
 
 The legacy alias `agent-bus` is also exposed as a CLI entrypoint.
+
+Run with a container:
+
+```bash
+docker run --rm -v /path/to/repo:/work ghcr.io/cervantesh/conhugo-agents-flow:latest install --repo-root /work
+```
 
 ## Repo Footprint
 
@@ -111,6 +128,7 @@ python -m build
 - push a tag like `v0.1.1`
 - GitHub automatically creates a GitHub Release with generated notes for every `v*` tag
 - GitHub Actions will build, validate, and publish to PyPI automatically on version tags
+- GitHub Actions will also publish a container image to `ghcr.io/cervantesh/conhugo-agents-flow`
 - PyPI production publishing is active for `cervantesh/conhugo-agents-flow` via `publish.yml` and environment `pypi`
 - manual dispatch of the publish workflow remains available for `target=pypi`
 - the `testpypi` target is gated and skips cleanly unless `TEST_PYPI_PUBLISHING_ENABLED=true` is configured after registering a trusted publisher for the `testpypi` environment
