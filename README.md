@@ -5,6 +5,8 @@ Open source tooling for coordinating humans and agents while they work inside Gi
 [PyPI package](https://pypi.org/project/conhugo-agents-flow/) | [GitHub repository](https://github.com/cervantesh/conhugo-agents-flow) | [GitHub releases](https://github.com/cervantesh/conhugo-agents-flow/releases)
 
 See [ROADMAP.md](C:/dev/conhugo-agents-flow/ROADMAP.md) for the phased improvement plan and linked GitHub backlog.
+See [docs/guia-adopcion-es.md](C:/dev/conhugo-agents-flow/docs/guia-adopcion-es.md) for the Spanish adoption guide.
+See [ADOPTION_GUIDE.md](C:/dev/conhugo-agents-flow/ADOPTION_GUIDE.md) for the English adoption guide.
 
 `ConHugo Agents Flow` is not product runtime code. It is development-process tooling: durable handoffs, shared working memory, anti-drift checks, and upgradeable repo-local coordination artifacts.
 
