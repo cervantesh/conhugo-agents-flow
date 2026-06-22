@@ -100,6 +100,7 @@ python -m build
 - update `src/agent_bus/__init__.py`
 - update `CHANGELOG.md`
 - push a tag like `v0.1.1`
+- GitHub automatically creates a GitHub Release with generated notes for every `v*` tag
 - GitHub Actions will build and validate artifacts on version tags
 - manual dispatch of the publish workflow can be used for TestPyPI or PyPI when publishing is configured
 
