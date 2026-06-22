@@ -2,6 +2,8 @@
 
 Open source tooling for coordinating humans and agents while they work inside Git repositories.
 
+[PyPI package](https://pypi.org/project/conhugo-agents-flow/) | [GitHub repository](https://github.com/cervantesh/conhugo-agents-flow) | [GitHub releases](https://github.com/cervantesh/conhugo-agents-flow/releases)
+
 `ConHugo Agents Flow` is not product runtime code. It is development-process tooling: durable handoffs, shared working memory, anti-drift checks, and upgradeable repo-local coordination artifacts.
 
 ## What It Does
@@ -25,6 +27,11 @@ Open source tooling for coordinating humans and agents while they work inside Gi
 ```bash
 pip install conhugo-agents-flow
 ```
+
+Published package:
+
+- PyPI: `conhugo-agents-flow`
+- Maintainer account: `cervantesh`
 
 ## Basic Usage
 
@@ -102,7 +109,9 @@ python -m build
 - push a tag like `v0.1.1`
 - GitHub automatically creates a GitHub Release with generated notes for every `v*` tag
 - GitHub Actions will build and validate artifacts on version tags
-- manual dispatch of the publish workflow can be used for TestPyPI or PyPI when publishing is configured
+- manual dispatch of the publish workflow can publish to PyPI through the configured trusted publisher
+- PyPI production publishing is active for `cervantesh/conhugo-agents-flow` via `publish.yml` and environment `pypi`
+- configure a separate trusted publisher before using the `testpypi` target
 
 See [CONTRIBUTING.md](C:/dev/conhugo-agents-flow/CONTRIBUTING.md) for the development and release flow.
 

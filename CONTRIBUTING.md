@@ -53,4 +53,14 @@ python -m build
 4. Create and push a tag like `v0.1.1`
 5. GitHub Actions will create a GitHub Release with generated notes for that tag
 6. GitHub Actions will run CI and validate build artifacts on the tag
-7. Trigger the publish workflow manually for TestPyPI or PyPI once publishing is configured
+7. Trigger `publish.yml` manually with `target=pypi` to publish to the live PyPI project
+8. Confirm the package page shows the new version at `https://pypi.org/project/conhugo-agents-flow/`
+
+## Publishing Configuration
+
+- production publishing is active through PyPI trusted publishing
+- current trusted publisher owner: `cervantesh`
+- current trusted publisher repository: `conhugo-agents-flow`
+- current trusted publisher workflow: `publish.yml`
+- current trusted publisher environment: `pypi`
+- if you want pre-production package validation, register a separate trusted publisher for the `testpypi` environment before dispatching that target

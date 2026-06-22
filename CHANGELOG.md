@@ -6,6 +6,11 @@ The format is inspired by Keep a Changelog and this project follows Semantic Ver
 
 ## [0.1.1] - 2026-06-22
 
+### Added
+
+- live PyPI publication for `conhugo-agents-flow` under the `cervantesh` maintainer account
+- trusted-publishing documentation for the repo release discipline
+
 ### Fixed
 
 - removed the deprecated MIT license classifier that broke package builds in GitHub Actions
