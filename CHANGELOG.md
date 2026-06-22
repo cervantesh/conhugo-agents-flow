@@ -10,6 +10,8 @@ The format is inspired by Keep a Changelog and this project follows Semantic Ver
 
 - live PyPI publication for `conhugo-agents-flow` under the `cervantesh` maintainer account
 - trusted-publishing documentation for the repo release discipline
+- public `ROADMAP.md` with phased improvement plan
+- roadmap labels, milestones, and backlog epics in GitHub Issues
 
 ### Fixed
 

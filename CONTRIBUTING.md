@@ -44,6 +44,7 @@ python -m build
 - use SemVer
 - update `CHANGELOG.md` for every release-worthy change
 - if a change affects installed repos, document the expected upgrade path
+- keep roadmap-significant work linked to `ROADMAP.md` and the matching GitHub issue
 
 ## Release Flow
 
